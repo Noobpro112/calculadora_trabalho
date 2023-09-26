@@ -51,5 +51,5 @@ for text in button_texts:
     button.pack()
     button.configure(command=lambda btn=button: button_click(btn))
 
-root.resizable(True, True)
+root.resizable(False, False)
 root.mainloop()
