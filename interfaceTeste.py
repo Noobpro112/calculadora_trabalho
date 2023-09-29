@@ -14,7 +14,7 @@ class Calculadora:
         self.exibirImagem()  # Primeiro exibir a imagem
         self.exibirNum()  # Depois exibir o texto
         # SIM ISSO FOI IMPORTANTE,
-
+        #isso é para amanha viado kkk cade o bagulho funcionando
     def interface(self):
         root.title("Calculadora")
         root.geometry("320x480")
