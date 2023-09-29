@@ -1,55 +1,53 @@
 import tkinter as tk
-from tkinter import * 
-from tkinter.ttk import * 
-from time import strftime
+from tkinter import *
+from PIL import Image, ImageTk
+from functions import Botoes
 
-# Estanciação das libs
 root = tk.Tk()
-root.title('Calculadora')
-root.geometry('320x480')
 
-label = tk.Label(root, text="")
-label.pack()
 
-# Função para adicionar o texto do botão ao visor
-def button_click(event):
-    current_text = label["text"]
-    button_text = event.widget["text"]
+class Calculadora:
+    def __init__(self):
+        self.root = root
+        self.botoes = Botoes()
+        self.interface()
+        self.exibirImagem()  # Primeiro exibir a imagem
+        self.exibirNum()  # Depois exibir o texto
+        # SIM ISSO FOI IMPORTANTE,
 
-    if button_text == "<-":
-        # Se o botão for "<-", remove o último caractere
-        label.configure(text=current_text[:-1])
-    elif button_text == "CE":
-        # Se o botão for "CE", limpa todo o texto
-        label.configure(text="")
-    elif button_text == "C":
-        # Se o botão for "C", limpa apenas o último caractere
-        label.configure(text="")
-    elif button_text == "=":
-        # Se o botão for "=", avalia a expressão no visor
-        try:
-            result = eval(current_text)
-            label.configure(text=str(result))
-        except Exception as e:
-            label.configure(text="Erro")
-    else:
-        # Caso contrário, adiciona o texto do botão ao visor
-        label.configure(text=current_text + button_text)
+    def interface(self):
+        root.title("Calculadora")
+        root.geometry("320x480")
+        root.resizable(False, False)
 
-# Lista de botões para a calculadora
-button_texts = [
-    "%", "CE", "C", "<-",
-    "7", "8", "9", "/",
-    "4", "5", "6", "*",
-    "1", "2", "3", "-",
-    "0", ".", "=", "+"
-]
+    def exibirNum(self):
+        valor_default = self.botoes.get_string()
+        num_frame = Frame(root, bg="#AA125F")
+        num_frame.place(x=56, y=28, width=230, height=80)
+        num_label = Label(
+            num_frame,
+            text=valor_default,
+            font=("ArchivoBlack", 28),
+            fg="#FFFFFF",
+            bg="#AA125F",
+            anchor="w",
+        )
+        num_label.config(wraplength=230)
+        num_label.pack(fill=BOTH, expand=YES)
 
-# Criação dos botões e atribuição da função button_click
-for text in button_texts:
-    button = tk.Button(root, text=text)
-    button.pack()
-    button.configure(command=lambda btn=button: button_click(btn))
+    def exibirImagem(self):
+        imagem = Image.open("assets/placeholder.png")
+        imagem_tk = ImageTk.PhotoImage(imagem)
+        img_frame = Frame(root)
+        img_frame.place(relwidth=1, relheight=1)
+        img_label = Label(img_frame, image=imagem_tk)
+        img_label.pack(fill=BOTH, expand=YES)
+        img_label.image = imagem_tk
 
-root.resizable(False, False)
+    def atualizar_valor(self, novo_valor):
+        self.botoes.valor_default = novo_valor
+        self.exibirNum()
+
+
+Calculadora()
 root.mainloop()
