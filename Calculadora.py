@@ -1,6 +1,12 @@
+print('Suas opções são:')
+print('Mais, + ou mais para fazer uma conta de adição')
+print('Menos, - ou menos para fazer uma conta de subtração ')
+print('Multiplicação, * ou multiplicação para fazer uma conta de multiplicação.')
+print('Divisão, / ou divisão para fazer uma conta de divisão.') 
+print('Exponenciação, ** ou exponenciação para fazer uma conta de potenciação.')
 def calcular_equacao(equacao):
     # Validar a entrada do usuário
-    if equacao not in ["Mais", "+", "mais", "Menos", "-", "menos", "Divisão", "/", "divisão", "Multiplicação", "*", "multiplicação", "Exponenciação", "**"]:
+    if equacao not in ["Mais", "+", "mais", "Menos", "-", "menos", "Divisão", "/", "divisão", "Multiplicação", "*", "multiplicação", "Exponenciação", "**","exponenciação"]:
         raise ValueError("Opção inválida")
 
     # Obter os números da entrada do usuário
