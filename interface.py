@@ -14,9 +14,18 @@ class Calculadora:
         self.exibirBotoes()
 
     def interface(self):
-        root.title("Calculadora")
-        root.geometry("320x480")
-        root.resizable(False, False)
+        self.root.title("Calculadora")
+        self.root.geometry("320x480")
+        self.root.resizable(False, False)
+        #Icone
+        icon = Image.open("assets/icone.ico")
+        icon_tk = ImageTk.PhotoImage(icon)
+        self.root.tk.call('wm', 'iconphoto', self.root._w, icon_tk)
+        #Barra de tarefas
+        taskbar = Image.open("assets/icone_taskbar.png")
+        taskbar = taskbar.resize((16, 16))
+        taskbar_tk = ImageTk.PhotoImage(taskbar)
+        self.root.iconphoto(True, taskbar_tk)
 
     def exibirNum(self):
         valor_default = self.botoes.get_string()
@@ -141,6 +150,12 @@ class Calculadora:
         botao.image = botao_imgdiv
         botao.place(x=226, y=132)
 
+        botao_imgponto = Image.open("assets/ponto.png")
+        botao_imgponto = ImageTk.PhotoImage(botao_imgponto)
+        botao = tk.Button(root, image=botao_imgponto, command=self.botao_click_ponto, borderwidth=0, bg="#DE2861")
+        botao.image = botao_imgponto
+        botao.place(x=7, y=420)
+
     def botao_click_zero(self):
         self.botoes.add_zero()
         self.exibirNum()
@@ -195,6 +210,10 @@ class Calculadora:
 
     def botao_click_div(self):
         self.botoes.add_div()
+        self.exibirNum()
+
+    def botao_click_ponto(self):
+        self.botoes.add_ponto_decimal()
         self.exibirNum()
 
     def botao_click_clear(self):

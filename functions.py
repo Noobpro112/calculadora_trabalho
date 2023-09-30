@@ -60,6 +60,16 @@ class Botoes:
 
         self.valor_default += operador
 
+    def add_ponto_decimal(self):
+        # Verificar se já existe um ponto decimal na expressão
+        if '.' not in self.valor_default:
+            # Verificar se o último caractere é um operador
+            if self.valor_default and self.valor_default[-1] in "+-*/":
+                return
+
+            self.valor_default += "."
+
+
     def add_mais(self):
         self.add_operador("+")
     
