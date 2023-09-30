@@ -103,6 +103,29 @@ class Calculadora:
         self.botoes.add_nove()
         self.exibirNum()
 
+    def botao_click_mais(self):
+        self.botoes.add_mais()
+        self.exibirNum()
+
+    def botao_click_menos(self):
+        self.botoes.add_menos()
+        self.exibirNum()
+
+    def botao_click_mult(self):
+        self.botoes.add_mult()
+        self.exibirNum()
+
+    def botao_click_div(self):
+        self.botoes.add_div()
+        self.exibirNum()
+
+    def botao_click_clear(self):
+        self.botoes.clear()
+        self.exibirNum()
+
+    def botao_igual_click(self):
+        self.valor = self.botoes.evaluate()
+        self.exibirNum()
 
 if __name__ == "__main__":
     calculadora = Calculadora()
