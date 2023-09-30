@@ -1,9 +1,9 @@
-print('Suas opções de cálculos são:')
-print('Mais, + ou mais para fazer uma conta de adição')
-print('Menos, - ou menos para fazer uma conta de subtração')
-print('Multiplicação, * ou multiplicação para fazer uma conta de multiplicação.')
-print('Divisão, / ou divisão para fazer uma conta de divisão.')
-print('Exponenciação, ** ou exponenciação para fazer uma conta de potenciação.')
+print('Suas opções de Operadores são: +, -, /, * e **')
+print('+ para fazer uma conta de adição')
+print('- para fazer uma conta de subtração')
+print('* para fazer uma conta de multiplicação.')
+print('/ para fazer uma conta de divisão.')
+print('** para fazer uma conta de potenciação.')
 
 def calcular_equacao(equacao):
     try:
@@ -37,7 +37,7 @@ def calcular_equacao(equacao):
         # Tratar a exceção e imprimir a mensagem de erro
         return str(e)
 
-equacao = input("Qual sua equação? ")
+equacao = input("Qual sua Operação? ")
 resultado = calcular_equacao(equacao)
 
 if resultado == "Opção inválida" or resultado == "Erro: Divisão por zero":
