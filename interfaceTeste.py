@@ -105,6 +105,42 @@ class Calculadora:
         botao.image = botao_img9
         botao.place(x=163, y=133)
 
+        botao_imgce = Image.open("assets/CE.png")
+        botao_imgce = ImageTk.PhotoImage(botao_imgce)
+        botao = tk.Button(root, image=botao_imgce, command=self.botao_click_clear, borderwidth=0, bg="#DE2861")
+        botao.image = botao_imgce
+        botao.place(x=100, y=354)
+
+        botao_imgigu = Image.open("assets/=.png")
+        botao_imgigu = ImageTk.PhotoImage(botao_imgigu)
+        botao = tk.Button(root, image=botao_imgigu, command=self.botao_igual_click, borderwidth=0, bg="#DE2861")
+        botao.image = botao_imgigu
+        botao.place(x=163, y=354)
+
+        botao_imgmais = Image.open("assets/+.png")
+        botao_imgmais = ImageTk.PhotoImage(botao_imgmais)
+        botao = tk.Button(root, image=botao_imgmais, command=self.botao_click_mais, borderwidth=0, bg="#DE2861")
+        botao.image = botao_imgmais
+        botao.place(x=232, y=354)
+
+        botao_imgmenos = Image.open("assets/-.png")
+        botao_imgmenos = ImageTk.PhotoImage(botao_imgmenos)
+        botao = tk.Button(root, image=botao_imgmenos, command=self.botao_click_menos, borderwidth=0, bg="#DE2861")
+        botao.image = botao_imgmenos
+        botao.place(x=226, y=280)
+
+        botao_imgx = Image.open("assets/x.png")
+        botao_imgx = ImageTk.PhotoImage(botao_imgx)
+        botao = tk.Button(root, image=botao_imgx, command=self.botao_click_mult, borderwidth=0, bg="#DE2861")
+        botao.image = botao_imgx
+        botao.place(x=224, y=206)
+
+        botao_imgdiv = Image.open("assets/div.png")
+        botao_imgdiv = ImageTk.PhotoImage(botao_imgdiv)
+        botao = tk.Button(root, image=botao_imgdiv, command=self.botao_click_div, borderwidth=0, bg="#DE2861")
+        botao.image = botao_imgdiv
+        botao.place(x=226, y=132)
+
     def botao_click_zero(self):
         self.botoes.add_zero()
         self.exibirNum()

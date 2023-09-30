@@ -73,11 +73,19 @@ class Botoes:
         self.add_operador("/")
 
     def evaluate(self):
-        # Verificar a sintaxe da expressão antes de avaliá-la
-        ast.parse(self.valor_default)
+        try:
+            # Verificar a sintaxe da expressão antes de avaliá-la
+            ast.parse(self.valor_default)
 
-        # Avaliar a expressão e retornar o resultado
-        return eval(self.valor_default)
+            # Avaliar a expressão e armazenar o resultado em self.valor_default
+            result = eval(self.valor_default)
+            self.valor_default = str(result)
+        except (SyntaxError, ZeroDivisionError):
+            # Lidar com erros de syntax ou burrice do usuário
+            self.valor_default = "Erro"
+
+        # Retornar o resultado (opcional)
+        return self.valor_default
 
     def get_string(self):
         return self.valor_default
