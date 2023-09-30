@@ -4,18 +4,6 @@ class Botoes:
     def __init__(self):
         self.valor_default = ""
 
-    def calcular(self):
-        try:
-            # Verificar a sintaxe da expressão
-            ast.parse(self.valor_default)
-
-            # Avaliar a expressão
-            result = eval(self.valor_default)
-            self.valor_default = str(result)
-        except (SyntaxError, ZeroDivisionError):
-            # Lidar com erros de syntax ou burrice do usuário
-            self.valor_default = "Erro"
-
     def clear(self):
         self.valor_default = ""
 
@@ -55,7 +43,7 @@ class Botoes:
             return
 
         # Verificar se o último caractere é um operador antes de adicionar outro operador
-        if self.valor_default and self.valor_default[-1] in "+-*/":
+        if self.valor_default and self.valor_default[-1] in "+-*/.":
             return
 
         self.valor_default += operador
@@ -91,7 +79,7 @@ class Botoes:
             result = eval(self.valor_default)
             self.valor_default = str(result)
         except (SyntaxError, ZeroDivisionError):
-            # Lidar com erros de syntax ou burrice do usuário
+            # Lidar com erros de syntax ou inputs inválidos
             self.valor_default = "Erro"
 
         # Retornar o resultado (opcional)
