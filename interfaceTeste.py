@@ -47,7 +47,7 @@ class Calculadora:
     def exibirBotoes(self):
         botao_img0 = Image.open("assets/0.png")
         botao_img0 = ImageTk.PhotoImage(botao_img0)
-        botao = tk.Button(root, image=botao_img0, command=self.botoes.add_zero, borderwidth=0, bg="#DE2861",)
+        botao = tk.Button(root, image=botao_img0, command=self.botao_click_zero, borderwidth=0, bg="#DE2861",)
         botao.image = botao_img0
         botao.place(x=38, y=354)
 
@@ -59,9 +59,21 @@ class Calculadora:
 
         botao_img2 = Image.open("assets/2.png")
         botao_img2 = ImageTk.PhotoImage(botao_img2)
-        botao = tk.Button(root, image=botao_img2, command=self.botoes.add_dois, borderwidth=0, bg="#DE2861",)
+        botao = tk.Button(root, image=botao_img2, command=self.botao_click_dois, borderwidth=0, bg="#DE2861",)
         botao.image = botao_img2
         botao.place(x=100, y=280)
+
+        botao_img3 = Image.open("assets/3.png")
+        botao_img3 = ImageTk.PhotoImage(botao_img3)
+        botao = tk.Button(root, image=botao_img3, command=self.botao_click_tres, borderwidth=0, bg="#DE2861",)
+        botao.image = botao_img3
+        botao.place(x=163, y=280)
+
+        botao_img4 = Image.open("assets/4.png")
+        botao_img4 = ImageTk.PhotoImage(botao_img4)
+        botao = tk.Button(root, image=botao_img4, command=self.botao_click_quatro, borderwidth=0, bg="#DE2861",)
+        botao.image = botao_img4
+        botao.place(x=36, y=206)
 
     def botao_click_zero(self):
         self.botoes.add_zero()
