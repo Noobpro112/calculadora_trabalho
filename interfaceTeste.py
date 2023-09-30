@@ -75,6 +75,36 @@ class Calculadora:
         botao.image = botao_img4
         botao.place(x=36, y=206)
 
+        botao_img5 = Image.open("assets/5.png")
+        botao_img5 = ImageTk.PhotoImage(botao_img5)
+        botao = tk.Button(root, image=botao_img5, command=self.botao_click_cinco, borderwidth=0, bg="#DE2861")
+        botao.image = botao_img5
+        botao.place(x=99, y=206)
+
+        botao_img6 = Image.open("assets/6.png")
+        botao_img6 = ImageTk.PhotoImage(botao_img6)
+        botao = tk.Button(root, image=botao_img6, command=self.botao_click_seis, borderwidth=0, bg="#DE2861")
+        botao.image = botao_img6
+        botao.place(x=161, y=206)
+
+        botao_img7 = Image.open("assets/7.png")
+        botao_img7 = ImageTk.PhotoImage(botao_img7)
+        botao = tk.Button(root, image=botao_img7, command=self.botao_click_sete, borderwidth=0, bg="#DE2861")
+        botao.image = botao_img7
+        botao.place(x=38, y=133)
+
+        botao_img8 = Image.open("assets/8.png")
+        botao_img8 = ImageTk.PhotoImage(botao_img8)
+        botao = tk.Button(root, image=botao_img8, command=self.botao_click_oito, borderwidth=0, bg="#DE2861")
+        botao.image = botao_img8
+        botao.place(x=100, y=133)
+
+        botao_img9 = Image.open("assets/9.png")
+        botao_img9 = ImageTk.PhotoImage(botao_img9)
+        botao = tk.Button(root, image=botao_img9, command=self.botao_click_nove, borderwidth=0, bg="#DE2861")
+        botao.image = botao_img9
+        botao.place(x=163, y=133)
+
     def botao_click_zero(self):
         self.botoes.add_zero()
         self.exibirNum()
