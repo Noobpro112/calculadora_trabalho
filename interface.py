@@ -130,7 +130,7 @@ class Calculadora:
         botao_imgmais = ImageTk.PhotoImage(botao_imgmais)
         botao = tk.Button(root, image=botao_imgmais, command=self.botao_click_mais, borderwidth=0, bg="#DE2861")
         botao.image = botao_imgmais
-        botao.place(x=232, y=354)
+        botao.place(x=229, y=354)
 
         botao_imgmenos = Image.open("assets/-.png")
         botao_imgmenos = ImageTk.PhotoImage(botao_imgmenos)
