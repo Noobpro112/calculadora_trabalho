@@ -45,11 +45,65 @@ class Calculadora:
         img_label.image = imagem_tk
 
     def exibirBotoes(self):
-        botao_img = Image.open("assets/1.png")
-        botao_img = ImageTk.PhotoImage(botao_img)
-        botao = tk.Button(root, image=botao_img, command=self.botoes.add_um, borderwidth=0, bg="#DE2861",)
-        botao.image = botao_img
+        botao_img0 = Image.open("assets/0.png")
+        botao_img0 = ImageTk.PhotoImage(botao_img0)
+        botao = tk.Button(root, image=botao_img0, command=self.botoes.add_zero, borderwidth=0, bg="#DE2861",)
+        botao.image = botao_img0
         botao.place(x=38, y=354)
 
-Calculadora()
-root.mainloop()
+        botao_img1 = Image.open("assets/1.png")
+        botao_img1 = ImageTk.PhotoImage(botao_img1)
+        botao = tk.Button(root, image=botao_img1, command=self.botao_click_um, borderwidth=0, bg="#DE2861",)
+        botao.image = botao_img1
+        botao.place(x=38, y=280)
+
+        botao_img2 = Image.open("assets/2.png")
+        botao_img2 = ImageTk.PhotoImage(botao_img2)
+        botao = tk.Button(root, image=botao_img2, command=self.botoes.add_dois, borderwidth=0, bg="#DE2861",)
+        botao.image = botao_img2
+        botao.place(x=100, y=280)
+
+    def botao_click_zero(self):
+        self.botoes.add_zero()
+        self.exibirNum()
+
+    def botao_click_um(self):
+        self.botoes.add_um()
+        self.exibirNum()
+
+    def botao_click_dois(self):
+        self.botoes.add_dois()
+        self.exibirNum()
+
+    def botao_click_tres(self):
+        self.botoes.add_tres()
+        self.exibirNum()
+
+    def botao_click_quatro(self):
+        self.botoes.add_quatro()
+        self.exibirNum()
+
+    def botao_click_cinco(self):
+        self.botoes.add_cinco()
+        self.exibirNum()
+
+    def botao_click_seis(self):
+        self.botoes.add_seis()
+        self.exibirNum()
+
+    def botao_click_sete(self):
+        self.botoes.add_sete()
+        self.exibirNum()
+
+    def botao_click_oito(self):
+        self.botoes.add_oito()
+        self.exibirNum()
+
+    def botao_click_nove(self):
+        self.botoes.add_nove()
+        self.exibirNum()
+
+
+if __name__ == "__main__":
+    calculadora = Calculadora()
+    root.mainloop()

@@ -1,10 +1,16 @@
+import ast
+
 class Botoes:
     def __init__(self):
         self.valor_default = ""
 
     def calcular(self):
         try:
-            result = int(eval(self.valor_default))
+            # Verificar a sintaxe da expressão
+            ast.parse(self.valor_default)
+
+            # Avaliar a expressão
+            result = eval(self.valor_default)
             self.valor_default = str(result)
         except (SyntaxError, ZeroDivisionError):
             # Lidar com erros de syntax ou burrice do usuário
@@ -44,9 +50,14 @@ class Botoes:
         self.valor_default += "9"
 
     def add_operador(self, operador):
-        # Verificar se o último caractere é um operador ants de adicionar outro operador
+        # Verificar se o último caractere é um operador de fechamento de parênteses antes de adicionar outro operador
+        if self.valor_default and self.valor_default[-1] == ")":
+            return
+
+        # Verificar se o último caractere é um operador antes de adicionar outro operador
         if self.valor_default and self.valor_default[-1] in "+-*/":
             return
+
         self.valor_default += operador
 
     def add_mais(self):
@@ -60,6 +71,13 @@ class Botoes:
     
     def add_div(self):
         self.add_operador("/")
+
+    def evaluate(self):
+        # Verificar a sintaxe da expressão antes de avaliá-la
+        ast.parse(self.valor_default)
+
+        # Avaliar a expressão e retornar o resultado
+        return eval(self.valor_default)
 
     def get_string(self):
         return self.valor_default
