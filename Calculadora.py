@@ -1,4 +1,4 @@
-print('Suas opções são:')
+print('Suas opções de calculos são:')
 print('Mais, + ou mais para fazer uma conta de adição')
 print('Menos, - ou menos para fazer uma conta de subtração ')
 print('Multiplicação, * ou multiplicação para fazer uma conta de multiplicação.')
