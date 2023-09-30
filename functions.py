@@ -49,11 +49,11 @@ class Botoes:
 
     def add_ponto_decimal(self):
         if not self.valor_default:
-            return
-        if '.' not in self.valor_default:
-            if self.valor_default and self.valor_default[-1] in "+-*/":
-                return
-
+            self.valor_default += "0."  # Adiciona "0." quando a string está vazia
+        elif self.valor_default[-1] in "+-*/":
+            self.valor_default += "0."  # Adiciona "0." após um operador
+        else:  
+          self.valor_default += "."
 
     def add_mais(self):
         self.add_operador("+")
@@ -74,6 +74,10 @@ class Botoes:
 
             # Avaliar a expressão e armazenar o resultado em self.valor_default
             result = eval(self.valor_default)
+            
+            # Arredondar o resultado para duas casas decimais
+            result = round(result, 3)
+            
             self.valor_default = str(result)
         except (SyntaxError, ZeroDivisionError):
             # Lidar com erros de syntax ou inputs inválidos
