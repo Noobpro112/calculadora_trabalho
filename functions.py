@@ -38,24 +38,21 @@ class Botoes:
         self.valor_default += "9"
 
     def add_operador(self, operador):
-        # Verificar se o último caractere é um operador de fechamento de parênteses antes de adicionar outro operador
         if self.valor_default and self.valor_default[-1] == ")":
             return
-
-        # Verificar se o último caractere é um operador antes de adicionar outro operador
         if self.valor_default and self.valor_default[-1] in "+-*/.":
+            return
+        if not self.valor_default:
             return
 
         self.valor_default += operador
 
     def add_ponto_decimal(self):
-        # Verificar se já existe um ponto decimal na expressão
+        if not self.valor_default:
+            return
         if '.' not in self.valor_default:
-            # Verificar se o último caractere é um operador
             if self.valor_default and self.valor_default[-1] in "+-*/":
                 return
-
-            self.valor_default += "."
 
 
     def add_mais(self):
