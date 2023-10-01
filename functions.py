@@ -69,9 +69,9 @@ class Botoes:
     def add_ponto_decimal(self):
         if not self.bloqueado:
             if not self.valor_default:
-                self.valor_default += "0."  # Adiciona "0." quando a string está vazia
+                self.valor_default += "0."  
             elif self.valor_default[-1] in "+-*/":
-                self.valor_default += "0."  # Adiciona "0." após um operador
+                self.valor_default += "0."  
             else:  
                 self.valor_default += "."
 
@@ -94,15 +94,9 @@ class Botoes:
     def evaluate(self):
         try:
             if self.bloqueado:
-                return "Erro"  # Retorna "Erro" se bloqueado
-
-            # Verificar a sintaxe da expressão antes de avaliá-la
+                return "Erro" 
             ast.parse(self.valor_default)
-
-            # Avaliar a expressão e armazenar o resultado em self.valor_default
             result = eval(self.valor_default)
-            
-            # Arredondar o resultado para duas casas decimais
             result = round(result, 3)
             
             self.valor_default = str(result)
@@ -110,9 +104,7 @@ class Botoes:
             # Lidar com erros de syntax ou inputs inválidos
             self.valor_default = "Erro"
         finally:
-            self.bloquear()  # Bloqueia a adição de valores após a avaliação
-
-        # Retornar o resultado (opcional)
+            self.bloquear() 
         return self.valor_default
 
     def get_string(self):
