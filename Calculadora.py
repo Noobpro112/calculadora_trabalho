@@ -1,9 +1,9 @@
-print('Suas opções de Operadores são: +, -, /, * e **')
-print('+ para fazer uma conta de adição')
-print('- para fazer uma conta de subtração')
-print('* para fazer uma conta de multiplicação.')
-print('/ para fazer uma conta de divisão.')
-print('** para fazer uma conta de potenciação.')
+print("""Suas opções de Operadores são: +, -, /, * e **')
++ para fazer uma conta de adição
+- para fazer uma conta de subtração
+* para fazer uma conta de multiplicação.
+/ para fazer uma conta de divisão.
+** para fazer uma conta de potenciação.""")
 
 def calcular_equacao(equacao):
     try:
