@@ -1,4 +1,5 @@
 import ast
+import math
 
 class Botoes:
     def __init__(self):
@@ -106,6 +107,95 @@ class Botoes:
         finally:
             self.bloquear() 
         return self.valor_default
+    
+    import ast
+import math
+
+class Botoes:
+    def __init__(self):
+        self.valor_default = ""
+        self.bloqueado = False
+        self.memory = None  # Para as funções de memória
+
+    # ---------- AS FUNÇÕES NOVAS DESSA MERDA PQP NUNCA MAIS----------
+    
+    def MCHM(self):
+        """Memory Clear/Hold/Memory - Limpa ou mantém a memória"""
+        if not self.bloqueado:
+            self.memory = None  # Limpa a memória
+
+    def M_plus(self):
+        """Memory Plus - Adiciona o valor atual à memória"""
+        if not self.bloqueado and self.valor_default:
+            try:
+                val = float(self.valor_default)
+                if self.memory is None:
+                    self.memory = val
+                else:
+                    self.memory += val
+            except ValueError:
+                pass
+
+    def M_minus(self):
+        """Memory Minus - Subtrai o valor atual da memória"""
+        if not self.bloqueado and self.valor_default:
+            try:
+                val = float(self.valor_default)
+                if self.memory is None:
+                    self.memory = -val
+                else:
+                    self.memory -= val
+            except ValueError:
+                pass
+
+    def MR(self):
+        """Memory Recall - Recupera o valor da memória"""
+        if not self.bloqueado and self.memory is not None:
+            self.valor_default = str(self.memory)
+            self.desbloquear()
+
+    def sin(self):
+        """Calcula o seno (em radianos)"""
+        if not self.bloqueado and self.valor_default:
+            try:
+                result = math.sin(float(self.valor_default))
+                self.valor_default = str(round(result, 8))  # Mais precisão
+            except ValueError:
+                pass
+
+    def cos(self):
+        """Calcula o cosseno (em radianos)"""
+        if not self.bloqueado and self.valor_default:
+            try:
+                result = math.cos(float(self.valor_default))
+                self.valor_default = str(round(result, 8))
+            except ValueError:
+                pass
+
+    def tan(self):
+        """Calcula a tangente do número do krl, odeio essa porra (em radianos)"""
+        if not self.bloqueado and self.valor_default:
+            try:
+                result = math.tan(float(self.valor_default))
+                self.valor_default = str(round(result, 8))
+            except ValueError:
+                pass
+
+    def xi(self):
+        """Calcula o inverso do valor atual nessa merda"""
+        if not self.bloqueado and self.valor_default:
+            try:
+                val = float(self.valor_default)
+                if val == 0:
+                    self.valor_default = "Erro"
+                    self.bloquear()
+                else:
+                    result = 1 / val
+                    self.valor_default = str(round(result, 8))
+            except ValueError:
+                self.valor_default = "Erro"
+                self.bloquear()
 
     def get_string(self):
         return self.valor_default
+    
