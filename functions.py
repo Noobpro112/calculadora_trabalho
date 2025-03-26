@@ -3,8 +3,7 @@ import math
 from typing import Optional, Union
 
 
-class Calculadora:
-    """Classe que gerencia as operações matemáticas e estado da calculadora."""
+class Botoes:
 
     def __init__(self):
         """Inicializa a calculadora com valores padrão."""
@@ -121,23 +120,37 @@ class Calculadora:
           # ---------- AS FUNÇÕES NOVAS DESSA MERDA PQP NUNCA MAIS----------
 
     def abrir_parenteses(self) -> None:
-        """Adiciona um parêntese de abertura ao display."""
         if not self._bloqueado:
             self._display += "("
 
     def fechar_parenteses(self) -> None:
-        """Adiciona um parêntese de fechamento ao display."""
         if not self._bloqueado:
             self._display += ")"
 
+    def abrir_colchetes(self):
+        if not self.bloqueado:
+            self.valor_default += "["
+
+    def fechar_colchetes(self):
+        if not self.bloqueado:
+            self.valor_default += "]"
+
+    def abrir_chaves(self):
+        if not self.bloqueado:
+            self.valor_default += "{"
+
+    def fechar_chaves(self):
+        if not self.bloqueado:
+            self.valor_default += "}"
+
+
     # Funções de memória
     def memory_clear(self) -> None:
-        """Limpa a memória da calculadora."""
+        """Limpa a memória da calculadora(Amém deepseek)."""
         if not self._bloqueado:
             self._memory = None
 
     def memory_add(self) -> None:
-        """Adiciona o valor atual à memória."""
         if not self._bloqueado and self._display:
             try:
                 valor = float(self._display)
@@ -146,7 +159,6 @@ class Calculadora:
                 pass
 
     def memory_subtract(self) -> None:
-        """Subtrai o valor atual da memória."""
         if not self._bloqueado and self._display:
             try:
                 valor = float(self._display)
@@ -155,14 +167,11 @@ class Calculadora:
                 pass
 
     def memory_recall(self) -> None:
-        """Recupera o valor armazenado na memória."""
         if not self._bloqueado and self._memory is not None:
             self._display = str(self._memory)
             self._desbloquear()
 
-    # Funções matemáticas
     def calcular_cosseno(self) -> None:
-        """Calcula o cosseno do valor atual (em radianos)."""
         if not self._bloqueado and self._display:
             try:
                 resultado = math.cos(float(self._display))
@@ -171,7 +180,6 @@ class Calculadora:
                 pass
 
     def calcular_tangente(self) -> None:
-        """Calcula a tangente do valor atual (em radianos)."""
         if not self._bloqueado and self._display:
             try:
                 resultado = math.tan(float(self._display))
@@ -180,7 +188,6 @@ class Calculadora:
                 pass
 
     def calcular_seno(self) -> None:
-        """Calcula o seno do valor atual (em radianos)."""
         if not self._bloqueado and self._display:
             try:
                 resultado = math.sin(float(self._display))
@@ -189,7 +196,6 @@ class Calculadora:
                 pass
 
     def calcular_potencia(self) -> None:
-        """Calcula a potência x elevado a y."""
         if not self._bloqueado and self._display:
             try:
                 if '^' in self._display:
@@ -204,7 +210,6 @@ class Calculadora:
                 self._bloquear()
 
     def calcular_raiz_quadrada(self) -> None:
-        """Calcula a raiz quadrada do valor atual."""
         if not self._bloqueado and self._display:
             try:
                 valor = float(self._display)
@@ -219,7 +224,6 @@ class Calculadora:
                 self._bloquear()
 
     def calcular_fatorial(self) -> None:
-        """Calcula o fatorial do valor atual ou adiciona operador fatorial."""
         if not self._bloqueado and self._display:
             try:
                 if self._display.endswith('!'):
@@ -239,13 +243,11 @@ class Calculadora:
                 self._bloquear()
 
     def adicionar_constante_e(self) -> None:
-        """Adiciona a constante de Euler (e) ao display."""
         if not self._bloqueado:
             self._display = str(math.e)
             self._desbloquear()
 
     def evaluate(self) -> str:
-        """Avalia a expressão matemática no display."""
         try:
             if self._bloqueado:
                 return "Erro"
@@ -262,7 +264,6 @@ class Calculadora:
         finally:
             self._bloquear()
 
-    # Aliases para compatibilidade
     MC = memory_clear
     M_plus = memory_add
     M_minus = memory_subtract
