@@ -13,10 +13,25 @@ class CalculadoraInterface:
         self.root.title("Calculadora")
         self.root.geometry("320x480")
         self.root.resizable(False, False)
+        self.setup_icons()
         self.setup_background()
         self.setup_display()
         self.load_buttons()
         self.position_buttons()
+
+    def setup_icons(self):
+        try:
+            self.root.iconbitmap("assets/icone.ico")
+            
+            taskbar_icon = Image.open("assets/icone_taskbar.png")
+            taskbar_photo = ImageTk.PhotoImage(taskbar_icon)
+            
+            self.root.tk.call('wm', 'iconphoto', self.root._w, taskbar_photo)
+            
+            self.root.iconphoto(False, taskbar_photo)
+            
+        except Exception as e:
+            print(f"icones não carregados {e}")
 
     def setup_background(self):
         try:
@@ -63,7 +78,9 @@ class CalculadoraInterface:
             'x.png': self.botoes_backend.add_mult,
             '+.png': self.botoes_backend.add_mais,
             '-.png': self.botoes_backend.add_menos,
-            '=.png': lambda: [self.botoes_backend.evaluate(), self.update_display()]
+            '=.png': lambda: [self.botoes_backend.evaluate(), self.update_display()],
+            'back.png': self.botoes_backend.backspace,
+            'exp.png': self.botoes_backend.calcular_potencia
         }
 
         for img_file, command in button_map.items():
@@ -83,6 +100,7 @@ class CalculadoraInterface:
                 self.botoes_interface[img_file] = btn
             except Exception as e:
                 print(f"Erro ao carregar {img_file}: {e}")
+                print(f"Caminho tentado: {img_path}")
 
     def position_buttons(self):
         COLUNA_1 = 38
