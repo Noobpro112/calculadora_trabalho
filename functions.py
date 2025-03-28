@@ -6,7 +6,6 @@ from typing import Optional, Union
 class Botoes:
 
     def __init__(self):
-        """Inicializa a calculadora com valores padrão."""
         self._display = ""
         self._bloqueado = False
         self._memory: Optional[float] = None
@@ -14,69 +13,53 @@ class Botoes:
 
     @property
     def display(self) -> str:
-        """Retorna o valor atual do display."""
         return self._display
 
     def clear(self) -> None:
-        """Limpa o display e desbloqueia a calculadora."""
         self._display = ""
         self._desbloquear()
 
     def _bloquear(self) -> None:
-        """Bloqueia a calculadora para novas entradas."""
         self._bloqueado = True
 
     def _desbloquear(self) -> None:
-        """Desbloqueia a calculadora para novas entradas."""
         self._bloqueado = False
 
     def _adicionar_digito(self, digito: str) -> None:
-        """Adiciona um dígito ao display se a calculadora não estiver bloqueada."""
         if not self._bloqueado:
             self._display += digito
 
     def add_zero(self) -> None:
-        """Adiciona o dígito 0 ao display."""
         self._adicionar_digito("0")
 
     def add_um(self) -> None:
-        """Adiciona o dígito 1 ao display."""
         self._adicionar_digito("1")
 
     def add_dois(self) -> None:
-        """Adiciona o dígito 2 ao display."""
         self._adicionar_digito("2")
 
     def add_tres(self) -> None:
-        """Adiciona o dígito 3 ao display."""
         self._adicionar_digito("3")
 
     def add_quatro(self) -> None:
-        """Adiciona o dígito 4 ao display."""
         self._adicionar_digito("4")
 
     def add_cinco(self) -> None:
-        """Adiciona o dígito 5 ao display."""
         self._adicionar_digito("5")
 
     def add_seis(self) -> None:
-        """Adiciona o dígito 6 ao display."""
         self._adicionar_digito("6")
 
     def add_sete(self) -> None:
-        """Adiciona o dígito 7 ao display."""
         self._adicionar_digito("7")
 
     def add_oito(self) -> None:
-        """Adiciona o dígito 8 ao display."""
         self._adicionar_digito("8")
 
     def add_nove(self) -> None:
-        """Adiciona o dígito 9 ao display."""
         self._adicionar_digito("9")
 
     def add_operador(self, operador: str) -> None:
-        """Adiciona um operador matemático ao display se for válido."""
         if self._bloqueado:
             return
 
@@ -90,7 +73,6 @@ class Botoes:
         self._display += operador
 
     def add_ponto_decimal(self) -> None:
-        """Adiciona um ponto decimal ao display."""
         if self._bloqueado:
             return
 
@@ -102,19 +84,15 @@ class Botoes:
             self._display += "."
 
     def add_mais(self) -> None:
-        """Adiciona o operador de adição."""
         self.add_operador("+")
 
     def add_menos(self) -> None:
-        """Adiciona o operador de subtração."""
         self.add_operador("-")
 
     def add_mult(self) -> None:
-        """Adiciona o operador de multiplicação."""
         self.add_operador("*")
 
     def add_div(self) -> None:
-        """Adiciona o operador de divisão."""
         self.add_operador("/")
 
           # ---------- AS FUNÇÕES NOVAS DESSA MERDA PQP NUNCA MAIS----------
